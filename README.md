@@ -63,7 +63,7 @@ service docker restart
 建立目录
 
 ```
-mkdir /www /www/htdocs/ /www/log/ /www/settings/
+mkdir /www /www/htdocs/ /www/log/ /www/log/nginx /www/log/php /www/settings/ 
 ```
 
 - /www 工作目录
