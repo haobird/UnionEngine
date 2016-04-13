@@ -71,6 +71,32 @@ mkdir /www /www/htdocs/ /www/log/ /www/settings/
 - /www/log/ log日志记录
 - /www/settings/nginx/ nginx域名配置文件，.conf 后缀结尾
 
+主机域名配置如下例：
+
+```
+server {
+    listen   80 ;
+    index index.html index.htm;
+    server_name app.dev;
+
+    root /opt/htdocs/app/public;
+    index index.php index.html index.htm;
+    location / {
+        expires off;
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php {
+        expires off;
+        include fastcgi_params;
+        fastcgi_pass   php:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    }
+}
+```
+
+
 ## 构建步骤
 
 下载镜像及构建镜像
