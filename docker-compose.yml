@@ -7,7 +7,7 @@ nginx:
   volumes_from:
     - data
   volumes:
-#    - /www/settings/nginx:/etc/nginx/sites-enabled
+    - /www/settings/nginx:/etc/nginx/sites-enabled
     - /www:/opt
   links:
     - "php"
