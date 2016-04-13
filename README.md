@@ -17,7 +17,7 @@ brew install wget
 sudo easy_install pip
 ```
 
-## 安装Docker/Boot2Docker/Docker-Compose
+## 安装Docker/Boot2Docker/Docker-Compose（最好参考官方安装教程）
 
 ```
 brew update
@@ -32,14 +32,14 @@ Ubuntu系统，已经安装过以下组件：
 apt-get update && apt-get install python gcc make g++ git vim  wget curl pip
 ```
 
-## 安装Docker/Boot2Docker/Docker-Compose
+## 安装Docker/Boot2Docker/Docker-Compose（最好参考官方安装教程）
 
 ```
 curl -sSL https://get.docker.io/ubuntu/ | sudo sh
 sudo pip install -U docker-compose
 ```
 
-### 设置Docker镜像，加速下载
+### 设置Docker镜像，加速下载（请针对你能访问的源添加）
 
 Mac下：
 
