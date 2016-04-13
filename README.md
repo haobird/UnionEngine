@@ -58,9 +58,13 @@ DOCKER_OPTS=" --registry-mirror http://192.168.11.180:5000 --insecure-registry 1
 service docker restart
 ```
 
-相关目录说明
+##目录说明
+
 建立目录
+
+```
 mkdir /www /www/htdocs/ /www/log/ /www/settings/
+```
 
 - /www 工作目录
 - /www/htdocs/ 多项目目录
