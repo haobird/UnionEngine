@@ -23,9 +23,9 @@ php:
     - /www:/opt
   links:
     - "mysql"
-    - "memcache"
+#    - "memcache"
     - "redis"
-    - "gearman"
+#    - "gearman"
 
 # MYSQL Container #----------------------------------------
 mysql:
@@ -53,11 +53,11 @@ node:
       - "8001:8001"
 
 # MEMCACHE Container #---------------------------------------
-memcache:
-  build: ./memcache
-  container_name: union-memcache
-  ports:
-    - "11211:11211"
+#memcache:
+#  build: ./memcache
+#  container_name: union-memcache
+#  ports:
+#    - "11211:11211"
 
 # REDIS Container #------------------------------------------
 redis:
@@ -68,19 +68,19 @@ redis:
     - "6379:6379"
   volumes_from:
     - data
-#  volumes:
-#    - /www/logs/redis:/var/log/redis
+  volumes:
+    - /www/logs/redis:/var/log/redis
   restart: always
   privileged: true
 
 # GEARMAN Container #-----------------------------------------
-gearman:
-  build: ./gearman
-  container_name: union-gearman
-  ports:
-    - "4730:4730"
-  volumes:
-    - /www:/opt
+#gearman:
+#  build: ./gearman
+#  container_name: union-gearman
+#  ports:
+#    - "4730:4730"
+#  volumes:
+#    - /www:/opt
 
 # Data Volue Container #--------------------------------------
 data:
