@@ -61,15 +61,15 @@ node:
 
 # REDIS Container #------------------------------------------
 redis:
-  build: ./redis
-  #image: laradock/redis:0.1.0
+  #build: ./redis
+  image: laradock/redis:0.1.0
   container_name: union-redis
   ports:
     - "6379:6379"
   volumes_from:
     - data
   volumes:
-    - /www/logs/redis:/var/log/redis
+    - /www/log/redis:/var/log/redis
   restart: always
   privileged: true
 

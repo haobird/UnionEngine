@@ -25,58 +25,58 @@ build:
 	make build-data
 
 build-nginx:
-	docker build -t haobird/nginx ./nginx
+	docker build -t uniondock_nginx ./nginx
 
 run-nginx:
-	docker run -i -d -p 80:80 -v /www:/opt -t haobird/nginx
+	docker run -i -d -p 80:80 -v /www:/opt -t uniondock_nginx
 
 in-nginx:
-	docker run -i -p 80:80 -v /www:/opt -t haobird/nginx /bin/bash
+	docker run -i -p 80:80 -v /www:/opt -t uniondock_nginx /bin/bash
 
 build-php:
-	docker build -t haobird/php ./php
+	docker build -t uniondock_php ./php
 
 run-php:
-	docker run -i -d -p 9000:9000 -v ~/opt:/opt -t haobird/php
+	docker run -i -d -p 9000:9000 -v ~/opt:/opt -t uniondock_php
 
 in-php:
-	docker run -i -p 9000:9000 -v ~/opt:/opt -t haobird/php /bin/bash
+	docker run -i -p 9000:9000 -v ~/opt:/opt -t uniondock_php /bin/bash
 
 build-mysql:
-	docker build -t haobird/mysql ./mysql
+	docker build -t uniondock_mysql ./mysql
 
 run-mysql:
-	docker run -i -d -p 3306:3306 -v ~/opt/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -t haobird/mysql
+	docker run -i -d -p 3306:3306 -v ~/opt/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -t uniondock_mysql
 
 in-mysql:
-	docker run -i -p 3306:3306  -v ~/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -t haobird/mysql /bin/bash
+	docker run -i -p 3306:3306  -v ~/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -t uniondock_mysql /bin/bash
 
 build-node:
-	docker build -t haobird/node ./node
+	docker build -t uniondock_node ./node
 
 run-node:
-	docker run -i -d -p 8001:8001 -v ~/opt:/opt -t haobird/node
+	docker run -i -d -p 8001:8001 -v ~/opt:/opt -t uniondock_node
 
 in-node:
-	docker run -i -p 8001:8001 -v ~/opt:/opt -t haobird/node /bin/bash
+	docker run -i -p 8001:8001 -v ~/opt:/opt -t uniondock_node /bin/bash
 
 build-elasticsearch:
-	docker build -t haobird/elasticsearch ./elasticsearch
+	docker build -t uniondock_elasticsearch ./elasticsearch
 
 run-elasticsearch:
-	docker run -i -d -p 9200:9200 -p 9300:9300 -v ~/opt/data/elasticsearch:/usr/share/elasticsearch/data -t haobird/elasticsearch
+	docker run -i -d -p 9200:9200 -p 9300:9300 -v ~/opt/data/elasticsearch:/usr/share/elasticsearch/data -t uniondock_elasticsearch
 
 in-elasticsearch:
-	docker run -i -p 9200:9200 -p 9300:9300 -v ~/opt/data/elasticsearch:/usr/share/elasticsearch/data -t haobird/elasticsearch /bin/bash
+	docker run -i -p 9200:9200 -p 9300:9300 -v ~/opt/data/elasticsearch:/usr/share/elasticsearch/data -t uniondock_elasticsearch /bin/bash
 
 build-gearman:
-	docker build -t haobird/gearman ./gearman
+	docker build -t uniondock_gearman ./gearman
 
 run-gearman:
-	docker run -d -p 4730:4730 -v ~/opt:/opt -it haobird/gearman
+	docker run -d -p 4730:4730 -v ~/opt:/opt -it uniondock_gearman
 
 build-data:
-	docker build -t haobird/data ./data
+	docker build -t uniondock_data ./data
 
 clean:
 	docker rmi -f $(shell docker images | grep "<none>" | awk "{print \$3}")
