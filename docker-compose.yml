@@ -23,14 +23,13 @@ php:
     - /www:/opt
   links:
     - "mysql"
-#    - "memcache"
+    - "memcache"
     - "redis"
-#    - "gearman"
+    - "gearman"
 
 # MYSQL Container #----------------------------------------
 mysql:
   build: ./mysql
-  #image: laradock/mysql:0.1.0
   container_name: union-mysql
   ports:
     - "3306:3306"
@@ -61,8 +60,7 @@ node:
 
 # REDIS Container #------------------------------------------
 redis:
-  #build: ./redis
-  image: laradock/redis:0.1.0
+  build: ./redis
   container_name: union-redis
   ports:
     - "6379:6379"
@@ -74,18 +72,17 @@ redis:
   privileged: true
 
 # GEARMAN Container #-----------------------------------------
-#gearman:
-#  build: ./gearman
-#  container_name: union-gearman
-#  ports:
-#    - "4730:4730"
-#  volumes:
-#    - /www:/opt
+gearman:
+  build: ./gearman
+  container_name: union-gearman
+  ports:
+    - "4730:4730"
+  volumes:
+    - /www:/opt
 
 # Data Volue Container #--------------------------------------
 data:
   build: ./data
-  #image: laradock/data:0.1.0
   container_name: union-data
   volumes:
     - /var/lib/mysql
