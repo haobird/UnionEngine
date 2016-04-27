@@ -7,15 +7,15 @@ pull:
 	docker pull node:0.12
 
 dl:
-	wget https://github.com/phalcon/cphalcon/archive/1.3.5.tar.gz -O php/cphalcon.tgz
-	wget https://pecl.php.net/get/gearman-1.1.2.tgz -O php/gearman.tgz
-	wget https://pecl.php.net/get/redis-2.2.7.tgz -O php/redis.tgz
-	wget https://pecl.php.net/get/memcached-2.2.0.tgz -O php/memcached.tgz
-	wget https://pecl.php.net/get/xdebug-2.3.2.tgz -O php/xdebug.tgz
-	wget https://pecl.php.net/get/msgpack-0.5.6.tgz -O php/msgpack.tgz
-	wget https://pecl.php.net/get/memcache-2.2.7.tgz -O php/memcache.tgz
-	wget https://pecl.php.net/get/xhprof-0.9.4.tgz -O php/xhprof.tgz
-	wget https://getcomposer.org/composer.phar -O php/composer.phar
+	wget https://github.com/phalcon/cphalcon/archive/1.3.5.tar.gz -O php1/cphalcon.tgz
+	wget https://pecl.php.net/get/gearman-1.1.2.tgz -O php1/gearman.tgz
+	wget https://pecl.php.net/get/redis-2.2.7.tgz -O php1/redis.tgz
+	wget https://pecl.php.net/get/memcached-2.2.0.tgz -O php1/memcached.tgz
+	wget https://pecl.php.net/get/xdebug-2.3.2.tgz -O php1/xdebug.tgz
+	wget https://pecl.php.net/get/msgpack-0.5.6.tgz -O php1/msgpack.tgz
+	wget https://pecl.php.net/get/memcache-2.2.7.tgz -O php1/memcache.tgz
+	wget https://pecl.php.net/get/xhprof-0.9.4.tgz -O php1/xhprof.tgz
+	wget https://getcomposer.org/composer.phar -O php1/composer.phar
 
 build:
 	make build-nginx
