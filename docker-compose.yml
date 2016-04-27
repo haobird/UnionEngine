@@ -1,97 +1,104 @@
-# NGINX Container #------------------------------------
-nginx:
-  build: ./nginx
-  container_name: union-nginx
-  ports:
-    - "80:80"
-  volumes_from:
-    - data
-  volumes:
-    - /www/settings/nginx:/etc/nginx/sites-enabled
-    - /www:/opt
-  links:
-    - "php"
-  privileged: true
+version: '2'
+services:
+  # NGINX Container #------------------------------------
+  nginx:
+    build: ./nginx
+    image: union-nginx
+    container_name: union-nginx
+    ports:
+      - "80:80"
+    volumes_from:
+      - data
+    volumes:
+      - /www/settings/nginx:/etc/nginx/sites-enabled
+      - /www:/opt
+    links:
+      - "php"
 
-# PHP Container #----------------------------------------
-php:
-  build: ./php
-  container_name: union-php
-  ports:
-    - "9000:9000"
-  volumes:
-    - /www:/opt
-  links:
-    - "mysql"
-    - "memcache"
-    - "redis"
-    - "gearman"
+  # PHP Container #----------------------------------------
+  php:
+    build: ./php
+    image: union-php
+    container_name: union-php
+    ports:
+      - "9000:9000"
+    volumes:
+      - /www:/opt
+    links:
+      - mysql
+      - memcache
+      - redis
+#      - gearman
 
-# MYSQL Container #----------------------------------------
-mysql:
-  build: ./mysql
-  container_name: union-mysql
-  ports:
-    - "3306:3306"
-  volumes_from:
-    - data
-  volumes:
-    - /www/data/mysql:/var/lib/mysql
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: homestead
-    MYSQL_USER: homestead
-    MYSQL_PASSWORD: secret
-  privileged: true
+  # MYSQL Container #----------------------------------------
+  mysql:
+    build: ./mysql
+    image: union-mysql
+    container_name: union-mysql
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - data
+    volumes:
+      - /www/data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
 
-# Node Container #-----------------------------------------
-node:
-  build: ./node
-  container_name: union-node
-  ports:
-      - "8001:8001"
+  # Node Container #-----------------------------------------
+  node:
+    build: ./node
+    image: union-node
+    container_name: union-node
+    ports:
+        - "8001:8001"
 
-# MEMCACHE Container #---------------------------------------
-#memcache:
-#  build: ./memcache
-#  container_name: union-memcache
-#  ports:
-#    - "11211:11211"
+  # MEMCACHE Container #---------------------------------------
+  memcache:
+    build: ./memcache
+    image: union-memcache
+    container_name: union-memcache
+    ports:
+      - "11211:11211"
 
-# REDIS Container #------------------------------------------
-redis:
-  build: ./redis
-  container_name: union-redis
-  ports:
-    - "6379:6379"
-  volumes_from:
-    - data
-  volumes:
-    - /www/log/redis:/var/log/redis
-  restart: always
-  privileged: true
+  # REDIS Container #------------------------------------------
+  redis:
+    build: ./redis
+    image: union-redis
+    container_name: union-redis
+    ports:
+      - "6379:6379"
+    volumes_from:
+      - data
+    volumes:
+      - /www/log/redis:/var/log/redis
+    #restart: always
+    privileged: true
 
-# GEARMAN Container #-----------------------------------------
-gearman:
-  build: ./gearman
-  container_name: union-gearman
-  ports:
-    - "4730:4730"
-  volumes:
-    - /www:/opt
+  # GEARMAN Container #-----------------------------------------
+  gearman:
+    build: ./gearman
+    image: union-gearman
+    container_name: union-gearman
+    ports:
+      - "4730:4730"
+    volumes:
+      - /www:/opt
 
-# Data Volue Container #--------------------------------------
-data:
-  build: ./data
-  container_name: union-data
-  volumes:
-    - /var/lib/mysql
-    - /var/lib/redis
+  # Data Volue Container #--------------------------------------
+  data:
+    build: ./data
+    image: union-data
+    container_name: union-data
+    volumes:
+      - /var/lib/mysql
+      - /var/lib/redis
 
-# Beanstalkd Container #-----------------------------------
-# beanstalkd:
-#   image: laradock/beanstalkd:0.1.0
-#   container_name: beanstalkd
-#   ports:
-#     - "11300:11300"
-#   privileged: true
+  ## Beanstalkd Container #-----------------------------------
+  ## beanstalkd:
+  ##   image: laradock/beanstalkd:0.1.0
+  ##   container_name: beanstalkd
+  ##   ports:
+  ##     - "11300:11300"
+  ##   privileged: true
