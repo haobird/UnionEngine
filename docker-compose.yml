@@ -81,6 +81,8 @@ services:
     build: ./gearman
     image: union-gearman
     container_name: union-gearman
+    depends_on:
+      - php
     ports:
       - "4730:4730"
     volumes:
